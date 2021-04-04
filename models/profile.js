@@ -3,7 +3,7 @@ const db = require("../db");
 
 const Profile = db.define("profile", {
     userId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: true,
     },
     birthday: {

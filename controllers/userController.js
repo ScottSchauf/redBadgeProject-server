@@ -4,6 +4,7 @@ const {UserModel} = require("../models");
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 
+// POST: Register a User
 router.post("/register", async (req, res) => {
     let { firstName, lastName, email, password, isAdmin } = req.body.user;
     try {
@@ -35,6 +36,8 @@ router.post("/register", async (req, res) => {
     }
 });
 
+
+// POST: Log a User In
 router.post("/login", async (req, res) => {
     let {email, password} = req.body.user;
 
@@ -71,6 +74,21 @@ router.post("/login", async (req, res) => {
         res.status(500).json({
             message: "Failed to log user in"
         })
+    }
+});
+
+
+// GET: Get a User by ID
+router.get("/:id", async (req, res) => {
+    try {
+        const anotherUser = await UserModel.findAll({
+            where: {
+                id: req.params.id
+            }
+        });
+        res.status(200).json(anotherUser);
+    } catch (err) {
+        res.status(500).json({ error: err });
     }
 });
 
