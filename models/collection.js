@@ -3,7 +3,7 @@ const db = require("../db");
 
 const Collection = db.define("collection", {
     userId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: true,
     },
     title: {
