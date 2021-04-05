@@ -2,9 +2,11 @@ const {DataTypes} = require("sequelize");
 const db = require("../db");
 
 const Collection = db.define("collection", {
-    userId: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+    id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
     },
     title: {
         type: DataTypes.STRING,

@@ -2,9 +2,11 @@ const {DataTypes} = require("sequelize");
 const db = require("../db");
 
 const Profile = db.define("profile", {
-    userId: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+    id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
     },
     birthday: {
         type: DataTypes.DATE,

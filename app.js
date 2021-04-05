@@ -6,10 +6,12 @@ const dbConnection = require('./db');
 app.use(Express.json());
 
 const controllers = require('./controllers');
+const middlewares = require('./middleware');
 
 app.use('/user', controllers.userController);
 app.use('/collection', controllers.collectionController);
 app.use('/profile', controllers.profileController);
+app.use('/admin', middlewares.ValidateJWT, middlewares.Admin, controllers.adminController);
 
 dbConnection.authenticate()
     .then(() => dbConnection.sync())
