@@ -8,6 +8,7 @@ app.use(Express.json());
 const controllers = require('./controllers');
 const middlewares = require('./middleware');
 
+app.use(middlewares.Headers);
 app.use('/user', controllers.userController);
 app.use('/collection', controllers.collectionController);
 app.use('/profile', controllers.profileController);
